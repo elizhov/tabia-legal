@@ -1,0 +1,17 @@
+.employee-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.employee-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.employee-card a {
+    color: #A51C30; /* default icon color */
+    transition: color 0.3s ease;
+}
+
+.employee-card a:hover {
+    color: #540112; /* darker crimson on hover */
+}

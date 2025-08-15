@@ -1,0 +1,59 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  overflow-x: hidden;
+  /*font-family: 'Poppins', sans-serif;*/
+}
+
+#root {
+  max-width: none;
+
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-menu-horizontal {
+  height: 48px;          /* control menu height */
+  line-height: 48px;
+  border-bottom: none !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item {
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 1.25rem;
+}
+
+.ant-menu-horizontal > .ant-menu-item > a {
+  line-height: 48px;
+  padding: 0;
+  display: inline-block;
+  color: #fff !important;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item-selected {
+  background-color: transparent !important;
+}
+
+.ant-menu-ink-bar {
+  background-color: #fff !important;
+  height: 2px !important;
+  bottom: 6px !important;
+}
+
+.ant-carousel,
+.ant-carousel .slick-list,
+.ant-carousel .slick-slide {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+* {
+  font-family: 'Work Sans', sans-serif;
+}
