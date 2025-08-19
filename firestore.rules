@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Posts collection
+    match /posts/{postId} {
+      allow read: if true;    // anyone can read posts
+      allow write: if false;  // no one can write
+    }
+
+    // Employees collection
+    match /employees/{employeeId} {
+      allow read: if true;    // anyone can read employees
+      allow write: if false;  // no one can write
+    }
+
+  }
+}
