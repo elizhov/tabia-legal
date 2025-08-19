@@ -19,11 +19,11 @@ export default function EmployeeCard({ employee }) {
             >
 
             <Avatar size={employee.head ? 140 : 120} src={employee.photo} style={{ marginBottom: 20 }} />
-                <Title level={4} style={{ marginBottom: 0 }}>
+                <Title level={4} style={{ marginBottom: 0, fontSize: 30 }}>
                     {employee.name}
                     {employee.head && <Tag color="gold" style={{ marginLeft: 8 }}>Head of Office</Tag>}
                 </Title>
-                <Text type="secondary">{employee.title}</Text>
+                <Text type="secondary" style={{fontSize: 18}}>{employee.title}</Text>
                 <Paragraph style={{ marginTop: 15, minHeight: 60 }}>
                     {employee.bio}
                 </Paragraph>

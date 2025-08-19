@@ -13,58 +13,55 @@ const imgStyle = {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    opacity: 0.7,
+    transform: 'scale(1.05)',
+    filter: 'blur(6px)',
 };
 
 const textBoxStyle = {
     position: 'absolute',
     top: '50%',
-    transform: 'translateY(-50%)',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     color: '#fff',
-    fontSize: '1.5rem',
-    lineHeight: 1.4,
-    maxWidth: '300px',
-    textAlign: 'left',
-    left: '40px',
-    background: 'rgba(0, 0, 0, 0.4)',
-    padding: '20px',
-    borderRadius: '8px',
-    zIndex: 2
+    textAlign: 'center',
+    zIndex: 2,
+    background: 'none',
+    boxShadow: 'none',
+    lineHeight: 1.2,
+};
+
+const textShadowStyle = {
+    textShadow: '2px 2px 8px rgba(0,0,0,0.6)' // 🔹 subtle shadow
 };
 
 const images = [
     {
-        url: 'https://www.karlheinz-irlmeier.de/files/bilder/galerien/new-york-city-b&w/khi_1804_web-19.jpg',
-        left: 'Discover New York City',
-        right: 'The city that never sleeps.',
-    },
-    {
         url: 'https://images.unsplash.com/photo-1586782002395-4b748cf6e71d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0',
-        left: 'Peaceful Streets',
-        right: 'A hidden beauty in the chaos.',
     },
     {
         url: 'https://images.unsplash.com/photo-1601711635481-b2c394118b53?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0',
-        left: 'Urban Skyline',
-        right: 'Sunset views like no other.',
     },
     {
         url: 'https://images7.alphacoders.com/724/724579.jpg',
-        left: 'Brooklyn Bridge',
-        right: 'A timeless architectural marvel.',
     },
 ];
 
 export const Home = () => (
-    <Carousel autoplay dots={false}>
-        {images.map(({ url, left, right }, i) => (
+    <Carousel>
+        {images.map(({ url }, i) => (
             <div key={i}>
                 <div style={slideStyle}>
                     <img src={url} alt="" style={imgStyle} />
                     <div style={textBoxStyle}>
-                        <strong>{left}</strong>
-                        <br />
-                        {right}
+                        <div style={{ fontSize: '4rem', fontWeight: 900, ...textShadowStyle }}>
+                            TABIA
+                        </div>
+                        <div style={{ fontSize: '4rem', fontWeight: 900, ...textShadowStyle }}>
+                            LEGAL & ADVISORY
+                        </div>
+                        <div style={{ fontSize: '2rem', fontWeight: 500, marginTop: '20px', ...textShadowStyle }}>
+                            TAKING YOU TO THE TOP OF YOUR GAME
+                        </div>
                     </div>
                 </div>
             </div>

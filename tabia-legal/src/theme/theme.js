@@ -1,6 +1,6 @@
 export const theme = {
     cssVars: {
-        '--color-crimson': '#A51C30',
-        '--color-grey': '#c8c9cb',
+        '--color-crimson': '#7c1524',
+        '--color-grey': 'rgba(230,231,234,0.92)',
     },
 };

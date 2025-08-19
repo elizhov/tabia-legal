@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card, Avatar, Typography, Space, Tag, Button } from 'antd';
-import { MailOutlined, LinkedinOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { MailOutlined, LinkedinOutlined } from '@ant-design/icons';
 import employees from '../data/employees';
+import '../styles/Employee.css'
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -22,10 +23,11 @@ export default function Employee() {
 
     return (
         <div style={{ padding: '80px 20px', display: 'flex', justifyContent: 'center', background: '#f0f2f5', minHeight: '100vh' }}>
+        <div className="employee-page">
             <Card
                 style={{
                     display: 'flex',
-                    flexDirection: 'row', // explicitly set horizontal layout
+                    flexDirection: 'row',
                     maxWidth: 900,
                     width: '100%',
                     borderRadius: 16,
@@ -33,7 +35,7 @@ export default function Employee() {
                     boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
                     background: '#fff',
                 }}
-                bodyStyle={{ display: 'flex', padding: 0 }} // remove default card padding
+                bodyStyle={{ display: 'flex', padding: 0 }}
             >
                 {/* Left Column */}
                 <div
@@ -76,7 +78,8 @@ export default function Employee() {
                     </Paragraph>
                 </div>
             </Card>
-
         </div>
+        </div>
+
     );
 }

@@ -15,3 +15,9 @@
 .employee-card a:hover {
     color: #540112; /* darker crimson on hover */
 }
+
+/* OurTeam.css */
+.newsreader-font,
+.newsreader-font * {
+    font-family: 'Montserrat Serif', serif !important;
+}

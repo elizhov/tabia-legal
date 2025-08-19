@@ -55,5 +55,16 @@ html, body, #root {
 }
 
 * {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Baskervville', serif;
+}
+
+.ant-typography,
+.ant-typography h1,
+.ant-typography h2,
+.ant-typography h3,
+.ant-typography h4,
+.ant-typography h5,
+.ant-typography h6,
+.ant-typography p {
+  font-family: 'Baskerville', serif !important;
 }
