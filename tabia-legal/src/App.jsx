@@ -8,6 +8,7 @@ import {Industries} from "./pages/Industries.jsx";
 import {News} from "./pages/News.jsx";
 import {Home} from "./pages/Home.jsx";
 import Employee from "./pages/Employee.jsx";
+import { PostDetail } from "./pages/PostDetail";
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
                     <Route path="/services" element={<Services />} />
                     <Route path="/industries" element={<Industries />} />
                     <Route path="/news" element={<News />} />
+                    <Route path="/news/:id" element={<PostDetail />} />
                     <Route path="/our-team/:name" element={<Employee />} />
                 </Routes>
             </AppLayout>
