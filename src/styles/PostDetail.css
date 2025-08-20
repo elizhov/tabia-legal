@@ -10,8 +10,18 @@
 }
 
 .post-detail-back-btn {
-    margin-bottom: 24px;
+    color: #7c1524;
+    font-size: 20px;       /* bigger arrow */
+    padding: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
+
+.post-detail-back-btn:hover {
+    color: #a61e33;        /* lighter crimson */
+    transform: translateX(-4px); /* subtle left shift */
+}
+
+
 
 .post-detail-title {
     font-family: 'Montserrat', serif !important;

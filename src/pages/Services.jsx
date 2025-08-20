@@ -115,7 +115,10 @@ export const Services = () => {
                                                 style: { fontSize: '28px', color: '#7c1524' },
                                             })}
                                         </div>
-                                        <h3>{service.title}</h3>
+                                        {/*<h3>{service.title}</h3>*/}
+                                        <h3 className={service.title.includes("Residence") ? "long-title" : ""}>
+                                            {service.title}
+                                        </h3>
                                     </Card>
                                 </Col>
                             ))}

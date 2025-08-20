@@ -5,6 +5,7 @@ import { MailOutlined, LinkedinOutlined } from '@ant-design/icons';
 import '../styles/Employee.css';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
+import {ScaleSpinner} from "../components/ScaleSpinner.jsx";
 
 
 const { Title, Text, Paragraph } = Typography;
@@ -37,7 +38,18 @@ export default function Employee() {
     }, [name]);
 
 
-    if (loading) return <Spin tip="Loading employee..." style={{ display: 'block', marginTop: 60 }} />;
+    if (loading)
+        return (
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    padding: "100px 0",
+                }}
+            >
+                <Spin indicator={<ScaleSpinner size={64} />} tip="Loading posts..." />
+            </div>
+        );
 
     if (!employee) {
         return (

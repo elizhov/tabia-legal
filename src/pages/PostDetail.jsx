@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { Typography, Spin, Button } from "antd";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import "../styles/PostDetail.css";
 
 const { Title, Paragraph } = Typography;
@@ -41,12 +42,12 @@ export const PostDetail = () => {
     return (
         <div className="post-detail-container">
             <Button
-                type="default"
+                type="text" // no border, no background
+                icon={<ArrowLeftOutlined />}
                 onClick={() => navigate(-1)}
                 className="post-detail-back-btn"
-            >
-                Back
-            </Button>
+                aria-label="Go back"
+            />
 
             <Title className="post-detail-title">{post.title}</Title>
             <Paragraph className="post-detail-content">{post.content}</Paragraph>

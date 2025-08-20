@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchPosts } from "../api/fetchPosts.js";
 import { PostCard } from "../components/PostCard.jsx";
 import { Row, Col, Typography, Spin } from "antd";
+import { ScaleSpinner } from "../components/ScaleSpinner.jsx";
 
 
 export const News = () => {
@@ -17,7 +18,18 @@ export const News = () => {
         loadPosts();
     }, []);
 
-    if (loading) return <Spin tip="Loading posts..." />;
+    if (loading)
+        return (
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    padding: "100px 0",
+                }}
+            >
+                <Spin indicator={<ScaleSpinner size={64} />} tip="Loading posts..." />
+            </div>
+        );
 
     if (posts.length === 0) return <p>No posts yet</p>;
 

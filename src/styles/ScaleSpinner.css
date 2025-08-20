@@ -1,0 +1,12 @@
+.scale-spinner {
+    display: inline-block;
+    animation: rock 1.2s ease-in-out infinite;
+    transform-origin: 50% 10%; /* pivot at top of pole */
+    color: #7c1524; /* crimson tone */
+}
+
+@keyframes rock {
+    0% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+    100% { transform: rotate(-8deg); }
+}
