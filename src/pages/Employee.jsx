@@ -1,14 +1,71 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card, Avatar, Typography, Space, Tag, Button, Spin } from 'antd';
-import { MailOutlined, LinkedinOutlined } from '@ant-design/icons';
+import { MailOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons'; // ✅ added PhoneOutlined
 import '../styles/Employee.css';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
 import {ScaleSpinner} from "../components/ScaleSpinner.jsx";
 
 
-const { Title, Text, Paragraph } = Typography;
+const { Title, Text } = Typography;
+
+const renderBio = (bioText) => {
+    const sections = bioText.split(/\n(?=[A-Z][^\n]+)/); // split on capitalized section titles
+
+    return sections.map((section, idx) => {
+        const [titleLine, ...contentLines] = section.split("\n").filter(Boolean);
+        const isBulletList = contentLines.some(line => line.trim().startsWith("•"));
+
+        return (
+            <div key={idx} style={{ marginBottom: 28, fontFamily: "'Inter', sans-serif" }}>
+                <div
+                    style={{
+                        fontSize: 15,           // same as bullets
+                        fontWeight: 600,        // bold
+                        // color: "#A51C30",
+                        marginBottom: 10,
+                    }}
+                >
+                    {titleLine}
+                </div>
+
+                {isBulletList ? (
+                    <ul style={{ paddingLeft: 22, margin: 0 }}>
+                        {contentLines.map((line, i) => (
+                            <li
+                                key={i}
+                                style={{
+                                    marginBottom: 6,
+                                    fontSize: 15,
+                                    lineHeight: 1.6,
+                                    color: "#333",
+                                }}
+                            >
+                                {line.replace("•", "").trim()}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    contentLines.map((line, i) => (
+                        <p
+                            key={i}
+                            style={{
+                                fontSize: 15,
+                                lineHeight: 1.6,
+                                marginBottom: 12,
+                                color: "#444",
+                            }}
+                        >
+                            {line}
+                        </p>
+                    ))
+                )}
+            </div>
+        );
+    });
+};
+
 
 export default function Employee() {
     const { name } = useParams();
@@ -63,32 +120,8 @@ export default function Employee() {
     return (
         <div style={{ padding: '80px 20px', display: 'flex', justifyContent: 'center', background: '#f0f2f5', minHeight: '100vh' }}>
             <div className="employee-page">
-                <Card
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        maxWidth: 900,
-                        width: '100%',
-                        borderRadius: 16,
-                        padding: 30,
-                        boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
-                        background: '#fff',
-                    }}
-                    bodyStyle={{ display: 'flex', padding: 0 }}
-                >
-                    {/* Left Column */}
-                    <div
-                        style={{
-                            width: 240,
-                            flexShrink: 0,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            paddingRight: 20,
-                            borderRight: '1px solid #f0f0f0',
-                            justifyContent: 'center'
-                        }}
-                    >
+                <Card className="employee-card" bodyStyle={{ padding: 0 }}>
+                    <div className="employee-top">
                         <Avatar
                             size={180}
                             src={employee.photo}
@@ -97,28 +130,34 @@ export default function Employee() {
                         <Title level={4} style={{ marginTop: 16, textAlign: 'center' }}>
                             {employee.name} {employee.head && <Tag color="gold">Head</Tag>}
                         </Title>
-                        <Text type="secondary" style={{ fontSize: 16, textAlign: 'center' }}>
-                            {employee.position}
-                        </Text>
-                        <Space size="large" style={{ marginTop: 16 }}>
-                            {employee.email && (
-                                <a href={`mailto:${employee.email}`} target="_blank" rel="noopener noreferrer">
-                                    <MailOutlined style={{ fontSize: 28, color: '#A51C30' }} />
-                                </a>
-                            )}
-                            {employee.linkedin && (
-                                <a href={employee.linkedin} target="_blank" rel="noopener noreferrer">
-                                    <LinkedinOutlined style={{ fontSize: 28, color: '#A51C30' }} />
-                                </a>
-                            )}
-                        </Space>
+
+                        {/* ✅ Role + icons stacked vertically */}
+                        <div className="employee-meta">
+                            <Text type="secondary" style={{ fontSize: 16, textAlign: 'center' }}>
+                                {employee.position}
+                            </Text>
+                            <Space size="large" style={{ marginTop: 12 }}>
+                                {employee.email && (
+                                    <a href={`mailto:${employee.email}`}>
+                                        <MailOutlined style={{ fontSize: 28, color: '#A51C30' }} />
+                                    </a>
+                                )}
+                                {employee.linkedin && (
+                                    <a href={employee.linkedin} target="_blank" rel="noopener noreferrer">
+                                        <LinkedinOutlined style={{ fontSize: 28, color: '#A51C30' }} />
+                                    </a>
+                                )}
+                                {employee.number && (
+                                    <a href={`tel:${employee.number}`}>
+                                        <PhoneOutlined style={{ fontSize: 28, color: '#A51C30' }} />
+                                    </a>
+                                )}
+                            </Space>
+                        </div>
                     </div>
 
-                    {/* Right Column */}
-                    <div style={{ flex: 1, paddingLeft: 30 }}>
-                        <Paragraph style={{ fontSize: 15, lineHeight: 1.6 }}>
-                            {employee.bio}
-                        </Paragraph>
+                    <div className="employee-bio">
+                        {renderBio(employee.bio)}
                     </div>
                 </Card>
             </div>

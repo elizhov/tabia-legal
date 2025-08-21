@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Carousel, Row, Col, Spin } from "antd";
 import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config.js";
-import { PostCard } from "../components/PostCard.jsx"; // adjust path if needed
+import { PostCard } from "../components/PostCard.jsx";
+import {ScaleSpinner} from "../components/ScaleSpinner.jsx";
 
 const slideStyle = {
     width: "100vw",
@@ -124,8 +125,14 @@ export const Home = () => {
 
                 <div style={{ padding: "0 40px" }}>
                     {loading ? (
-                        <div style={{ textAlign: "center" }}>
-                            <Spin size="large" />
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                padding: "100px 0",
+                            }}
+                        >
+                            <Spin indicator={<ScaleSpinner size={64} />} tip="Loading posts..." />
                         </div>
                     ) : (
                         <Row gutter={[24, 24]}>

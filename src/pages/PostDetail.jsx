@@ -5,6 +5,7 @@ import { db } from "../firebase/config";
 import { Typography, Spin, Button } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import "../styles/PostDetail.css";
+import {ScaleSpinner} from "../components/ScaleSpinner.jsx";
 
 const { Title, Paragraph } = Typography;
 
@@ -35,9 +36,20 @@ export const PostDetail = () => {
         fetchPost();
     }, [id]);
 
-    if (loading) return <Spin tip="Loading post..." />;
+    if (loading)
+        return (
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    padding: "100px 0",
+                }}
+            >
+                <Spin indicator={<ScaleSpinner size={64} />} tip="Loading posts..." />
+            </div>
+        );
 
-    if (!post) return <p>Post not found</p>;
+    if (!post) return <p>No posts yet</p>;
 
     return (
         <div className="post-detail-container">

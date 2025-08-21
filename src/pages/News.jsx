@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchPosts } from "../api/fetchPosts.js";
 import { PostCard } from "../components/PostCard.jsx";
-import { Row, Col, Typography, Spin } from "antd";
+import { Row, Col, Spin } from "antd";
 import { ScaleSpinner } from "../components/ScaleSpinner.jsx";
 
 

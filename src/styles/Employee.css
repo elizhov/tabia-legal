@@ -2,3 +2,57 @@
 .employee-page * {
     font-family: 'Montserrat Serif', serif !important;
 }
+
+.employee-card {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     max-width: 800px;
+     width: 100%;
+     margin: 0 auto;
+     border-radius: 16px;
+     padding: 30px;
+     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+     background: #fff;
+ }
+
+.employee-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important; /* same as normal */
+    transform: none !important;
+}
+
+
+.employee-top {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.employee-meta {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.employee-bio {
+    margin-top: 30px;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* ✅ mobile tweak */
+@media (max-width: 600px) {
+    .employee-card {
+        padding: 20px;
+    }
+
+    .employee-top .ant-avatar {
+        width: 140px !important;
+        height: 140px !important;
+    }
+}

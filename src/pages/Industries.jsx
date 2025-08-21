@@ -54,6 +54,7 @@ const industries = [
 export const Industries = () => {
     return (
         <div style={{ padding: "60px 40px", background: "#f9f9f9" }}>
+            <h3 style={{color: "grey"}}>*Click each card to flip it and read the corresponding text</h3>
             <Row gutter={[24, 24]}>
                 {industries.map((item, index) => (
                     <Col xs={24} sm={12} md={8} key={index}>

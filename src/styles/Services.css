@@ -158,3 +158,37 @@
     font-size: 12px; /* smaller */
     line-height: 1.2;
 }
+
+/* Mobile arrows */
+@media (max-width: 768px) {
+    .scroll-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.9);
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        padding: 8px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .scroll-arrow.left {
+        left: 10px;
+    }
+
+    .scroll-arrow.right {
+        right: 10px;
+    }
+
+    .scroll-arrow svg {
+        font-size: 18px;
+        color: #7c1524;
+    }
+
+    .services-cards.mobile-only {
+        position: relative;
+    }
+}
+
