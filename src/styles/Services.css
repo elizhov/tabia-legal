@@ -5,38 +5,41 @@
 .services-hero {
     position: relative;
     width: 100%;
-    min-height: 400px;
+    min-height: 600px;
     background-color: #c6c6c6;
     overflow: hidden;
     display: flex;
-    align-items: flex-end; /* push overlay to the bottom */
+    align-items: flex-end;
 }
+
 
 .services-hero .t-background {
     position: absolute;
-    bottom: 0;        /* anchor at the bottom */
-    right: 0;          /* anchor to the left */
-    height: 95%;     /* stretch vertically */
-    max-height: 100%;
+    bottom: 0;
+    right: 0;
+    height: 95%;
     width: auto;
     opacity: 0.2;
     z-index: 1;
     pointer-events: none;
 }
 
+@media (max-width: 768px) {
+    .services-hero .t-background {
+        height: auto;
+        width: 80%;
+        right: 20%;
+        transform: translateX(50%);
+        opacity: 0.15;
+    }
+}
+
+
 .services-hero .overlay {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding: 20px 40px; /* space around cards */
-}
-
-
-@media (max-width: 768px) {
-    .services-hero .t-background {
-        max-width: 70%;
-        opacity: 0.2; /* fade more on small screens */
-    }
+    padding: 20px 40px;
 }
 
 .overlay {
@@ -56,10 +59,10 @@
 .service-card {
     display: flex;
     flex-direction: column;
-    align-items: center;   /* horizontal centering */
-    justify-content: center; /* vertical centering */
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    height: 150px; /* make boxes consistent height */
+    height: 150px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -86,7 +89,6 @@
     margin-bottom: 8px;
 }
 
-/* Desktop grid visible by default */
 .desktop-only {
     display: block;
 }
@@ -94,7 +96,6 @@
     display: none;
 }
 
-/* Mobile slider */
 @media (max-width: 768px) {
     .desktop-only {
         display: none;
@@ -113,12 +114,10 @@
     }
 
     .scroll-item {
-        flex: 0 0 80%; /* card takes ~80% width */
+        flex: 0 0 80%;
         scroll-snap-align: center;
     }
 }
-
-/* ===== Bottom Service Details ===== */
 
 .service-details {
     max-width: 1100px;
@@ -167,7 +166,6 @@
     margin: 0;
 }
 
-/* Responsive tweaks for details */
 @media (max-width: 768px) {
     .service-section {
         padding: 20px;
@@ -187,7 +185,6 @@
     line-height: 1.2;
 }
 
-/* Mobile arrows */
 @media (max-width: 768px) {
     .scroll-arrow {
         position: absolute;
