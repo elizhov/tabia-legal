@@ -8,8 +8,7 @@
     text-align: center;
 }
 
-/* iOS Safari fix: disable fixed background */
-@supports (-webkit-touch-callout: none) {
+@media (max-width: 768px) {
     .hero {
         background-attachment: scroll;
     }
