@@ -56,3 +56,13 @@
         height: 140px !important;
     }
 }
+.post-detail-back-btn {
+    color: #7c1524;
+    font-size: 20px;       /* bigger arrow */
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.post-detail-back-btn:hover {
+    color: #a61e33;        /* lighter crimson */
+    transform: translateX(-4px); /* subtle left shift */
+}

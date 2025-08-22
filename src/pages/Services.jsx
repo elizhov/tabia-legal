@@ -67,6 +67,13 @@ export const Services = () => {
     return (
         <div className="services-page">
             <div className="services-hero">
+                {/* Background T image */}
+                <img
+                    src="/letter-T.PNG"
+                    alt="Background T"
+                    className="t-background"
+                />
+
                 <div className="overlay">
 
                     {/* Desktop grid */}

@@ -4,11 +4,39 @@
 
 .services-hero {
     position: relative;
-    background: url('/t-background.jpeg') center/cover no-repeat;
-    height: 85vh;
+    width: 100%;
+    min-height: 400px;
+    background-color: #c6c6c6;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    align-items: flex-end; /* push overlay to the bottom */
+}
+
+.services-hero .t-background {
+    position: absolute;
+    bottom: 0;        /* anchor at the bottom */
+    right: 0;          /* anchor to the left */
+    height: 95%;     /* stretch vertically */
+    max-height: 100%;
+    width: auto;
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.services-hero .overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 20px 40px; /* space around cards */
+}
+
+
+@media (max-width: 768px) {
+    .services-hero .t-background {
+        max-width: 70%;
+        opacity: 0.2; /* fade more on small screens */
+    }
 }
 
 .overlay {

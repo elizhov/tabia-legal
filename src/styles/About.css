@@ -1,0 +1,16 @@
+.hero {
+    background-image: url("https://www.nyls.edu/wp-content/uploads/2020/06/MKT-Specialty-Areas-Banner-0620-v18-1.jpg");
+    height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(100%);
+    text-align: center;
+}
+
+/* iOS Safari fix: disable fixed background */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        background-attachment: scroll;
+    }
+}

@@ -2,12 +2,13 @@ import React from "react";
 import { Layout, Typography, Card } from "antd";
 import {
     CheckCircleOutlined,
-    HeartOutlined,
+    SafetyOutlined,
     TeamOutlined,
 } from "@ant-design/icons";
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
+import '../styles/About.css'
 
 const titleStyle = {
     color: "#a40834",
@@ -74,7 +75,7 @@ export const About = () => {
                             Unwavering commitment to prioritizing our clients
                         </li>
                         <li style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "12px" }}>
-                            <HeartOutlined style={{ color: "#a40834", marginRight: "10px" }} />
+                            <SafetyOutlined style={{ color: "#a40834", marginRight: "10px" }} />
                             Delivering excellence without arrogance
                         </li>
                         <li style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "12px" }}>

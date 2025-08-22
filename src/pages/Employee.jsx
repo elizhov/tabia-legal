@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card, Avatar, Typography, Space, Tag, Button, Spin } from 'antd';
-import { MailOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons'; // ✅ added PhoneOutlined
+import { MailOutlined, LinkedinOutlined, PhoneOutlined, ArrowLeftOutlined } from '@ant-design/icons'; // ✅ added PhoneOutlined
 import '../styles/Employee.css';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
@@ -11,19 +11,18 @@ import {ScaleSpinner} from "../components/ScaleSpinner.jsx";
 const { Title, Text } = Typography;
 
 const renderBio = (bioText) => {
-    const sections = bioText.split(/\n(?=[A-Z][^\n]+)/); // split on capitalized section titles
+    const sections = bioText.split(/\n(?=[A-Z][^\n]+)/);
 
     return sections.map((section, idx) => {
         const [titleLine, ...contentLines] = section.split("\n").filter(Boolean);
         const isBulletList = contentLines.some(line => line.trim().startsWith("•"));
 
         return (
-            <div key={idx} style={{ marginBottom: 28, fontFamily: "'Inter', sans-serif" }}>
+            <div key={idx} style={{ marginBottom: 28 }}>
                 <div
                     style={{
-                        fontSize: 15,           // same as bullets
-                        fontWeight: 600,        // bold
-                        // color: "#A51C30",
+                        fontSize: 15,
+                        fontWeight: 600,
                         marginBottom: 10,
                     }}
                 >
@@ -119,8 +118,18 @@ export default function Employee() {
 
     return (
         <div style={{ padding: '80px 20px', display: 'flex', justifyContent: 'center', background: '#f0f2f5', minHeight: '100vh' }}>
+
             <div className="employee-page">
+
                 <Card className="employee-card" bodyStyle={{ padding: 0 }}>
+                    <Button
+                        type="text"
+                        icon={<ArrowLeftOutlined />}
+                        onClick={() => navigate('/our-team')}
+                        className="post-detail-back-btn"
+                        aria-label="Go back"
+                    />
+
                     <div className="employee-top">
                         <Avatar
                             size={180}
@@ -131,7 +140,6 @@ export default function Employee() {
                             {employee.name} {employee.head && <Tag color="gold">Head</Tag>}
                         </Title>
 
-                        {/* ✅ Role + icons stacked vertically */}
                         <div className="employee-meta">
                             <Text type="secondary" style={{ fontSize: 16, textAlign: 'center' }}>
                                 {employee.position}

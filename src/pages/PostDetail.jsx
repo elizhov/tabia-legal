@@ -54,7 +54,7 @@ export const PostDetail = () => {
     return (
         <div className="post-detail-container">
             <Button
-                type="text" // no border, no background
+                type="text"
                 icon={<ArrowLeftOutlined />}
                 onClick={() => navigate(-1)}
                 className="post-detail-back-btn"
