@@ -22,19 +22,7 @@ export const About = () => {
     return (
         <Layout>
             {/* Parallax Hero */}
-            <div
-                style={{
-                    backgroundImage:
-                        "url('https://www.nyls.edu/wp-content/uploads/2020/06/MKT-Specialty-Areas-Banner-0620-v18-1.jpg')",
-                    height: "400px",
-                    backgroundAttachment: "fixed",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    filter: "grayscale(100%)",
-                    textAlign: 'center',
-
-                }}
-            >
+            <div className="hero">
             </div>
 
             <Content style={{ padding: "40px 20px", maxWidth: "1000px", margin: "auto" }}>

@@ -5,12 +5,10 @@
     background-size: cover;
     filter: grayscale(100%);
     text-align: center;
-
-    /* Default: safe scroll (works everywhere) */
-    background-attachment: scroll;
+    background-attachment: scroll; /* safe default */
 }
 
-/* Enable parallax only on desktop/laptops */
+/* Parallax only on desktop */
 @media (min-width: 1025px) {
     .hero {
         background-attachment: fixed;
