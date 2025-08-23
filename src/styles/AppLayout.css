@@ -23,17 +23,14 @@
     margin-right: 16px;
 }
 
-/* Desktop menu visible by default */
 .desktop-menu {
     flex: 1;
 }
 
-/* Hide mobile hamburger on desktop */
 .mobile-menu {
     display: none;
 }
 
-/* Responsive: show hamburger, hide desktop menu on small screens */
 @media (max-width: 767px) {
     .desktop-menu {
         display: none;
@@ -41,6 +38,20 @@
     .mobile-menu {
         display: block;
     }
+
+}
+
+.ant-drawer .ant-menu-item-selected {
+    color: #7c1524 !important;
+    background-color: transparent !important;
+}
+
+.ant-drawer .ant-menu-item-selected a {
+    color: #7c1524 !important;
+}
+
+.ant-drawer .ant-menu-item-selected::after {
+    border-right: 3px solid #7c1524 !important;
 }
 
 .app-content {

@@ -9,9 +9,8 @@
     background-color: #c6c6c6;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end; /* Back to flex-end for desktop - cards at bottom */
 }
-
 
 .services-hero .t-background {
     position: absolute;
@@ -25,15 +24,21 @@
 }
 
 @media (max-width: 768px) {
+    .services-hero {
+        min-height: auto; /* Let content determine height */
+        padding: 40px 0; /* Add vertical padding */
+        align-items: center; /* Center content on mobile */
+    }
+
     .services-hero .t-background {
         height: auto;
-        width: 80%;
-        right: 20%;
+        width: 60%; /* Smaller for mobile */
+        right: 10%;
+        bottom: -10%; /* Move slightly below for better text visibility */
         transform: translateX(50%);
-        opacity: 0.15;
+        opacity: 0.08; /* Much more subtle */
     }
 }
-
 
 .services-hero .overlay {
     position: relative;
@@ -48,6 +53,12 @@
     padding: 20px;
 }
 
+@media (max-width: 768px) {
+    .services-hero .overlay {
+        padding: 20px;
+    }
+}
+
 .services-hero h1 {
     font-size: 56px;
     font-weight: bold;
@@ -55,7 +66,14 @@
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
-/* Cards */
+@media (max-width: 768px) {
+    .services-hero h1 {
+        font-size: 32px;
+        margin: 0 0 30px 0;
+    }
+}
+
+/* Desktop Cards */
 .service-card {
     display: flex;
     flex-direction: column;
@@ -80,6 +98,7 @@
     font-weight: 600;
     margin-top: 10px;
     color: #333;
+    line-height: 1.3;
 }
 
 .icon {
@@ -89,6 +108,7 @@
     margin-bottom: 8px;
 }
 
+/* Layout Control */
 .desktop-only {
     display: block;
 }
@@ -103,22 +123,254 @@
     .mobile-only {
         display: block;
     }
+}
 
-    .scroll-container {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 16px;
-        padding: 20px;
-        -webkit-overflow-scrolling: touch;
+/* OPTION 1: Vertical Grid (2 columns) - ACTIVE */
+@media (max-width: 768px) {
+    .services-cards.mobile-only {
+        padding: 0 20px;
     }
 
-    .scroll-item {
-        flex: 0 0 80%;
-        scroll-snap-align: center;
+    .mobile-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 equal columns */
+        gap: 16px;
+        max-width: 420px; /* Optimized max width */
+        margin: 0 auto; /* Center the grid */
+    }
+
+    .mobile-grid .service-card {
+        height: 130px; /* Optimized height */
+        padding: 16px 12px; /* Better padding */
+        border: 1px solid rgba(124, 21, 36, 0.08); /* Subtle brand color border */
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Add subtle hover effect for better interactivity */
+    .mobile-grid .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #7c1524, transparent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-grid .service-card:active::before {
+        transform: scaleX(1);
+    }
+
+    .mobile-grid .service-card h3 {
+        font-size: 13px;
+        margin-top: 8px;
+        line-height: 1.3;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .mobile-grid .service-card .icon {
+        margin-bottom: 6px;
+    }
+
+    .mobile-grid .service-card .icon svg {
+        font-size: 24px !important;
+    }
+
+    /* Handle odd number of items - center the last item */
+    .mobile-grid .service-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1; /* Span full width */
+        max-width: 200px; /* Limit width when centered */
+        margin: 0 auto; /* Center it */
+    }
+
+    /* Touch feedback */
+    .mobile-grid .service-card:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
 }
 
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* OPTION 2: Compact List Style (Alternative) */
+.mobile-list {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 20px;
+    }
+
+    .mobile-list .service-card {
+        height: auto;
+        min-height: 70px;
+        flex-direction: row;
+        text-align: left;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .mobile-list .service-card .icon {
+        margin-right: 16px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .mobile-list .service-card .icon svg {
+        font-size: 24px !important;
+    }
+
+    .mobile-list .service-card h3 {
+        margin: 0;
+        font-size: 15px;
+        align-self: center;
+    }
+
+    /* Remove hover effects on mobile */
+    .mobile-list .service-card:hover {
+        transform: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .mobile-list .service-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* OPTION 3: Masonry-style staggered layout - ACTIVE */
+.mobile-masonry {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-masonry {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* Increased gap for better visual separation */
+        padding: 0 20px;
+    }
+
+    .mobile-masonry .service-card {
+        width: 100%;
+        max-width: 300px; /* Slightly wider for better proportions */
+        height: 110px; /* Taller for better visual balance */
+        margin: 0;
+        border: 1px solid rgba(124, 21, 36, 0.1); /* Subtle brand color border */
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+    }
+
+    /* Enhanced stagger effect - alternating left/right */
+    .mobile-masonry .service-card:nth-child(odd) {
+        transform: translateX(-25px); /* Move left */
+        border-left: 3px solid #7c1524; /* Add accent border */
+    }
+
+    .mobile-masonry .service-card:nth-child(even) {
+        transform: translateX(25px); /* Move right */
+        border-right: 3px solid #7c1524; /* Add accent border */
+    }
+
+    /* Create a zigzag visual flow */
+    .mobile-masonry .service-card:nth-child(3n) {
+        transform: translateX(-15px) scale(1.02); /* Slight scale variation */
+    }
+
+    .mobile-masonry .service-card:nth-child(4n) {
+        transform: translateX(15px) scale(1.02); /* Slight scale variation */
+    }
+
+    .mobile-masonry .service-card h3 {
+        font-size: 14px;
+        margin-top: 8px;
+        font-weight: 600;
+    }
+
+    .mobile-masonry .service-card .icon svg {
+        font-size: 22px !important; /* Slightly larger icons */
+    }
+
+    /* Add subtle animation on card appearance */
+    .mobile-masonry .service-card {
+        animation: fadeInUp 0.5s ease forwards;
+        opacity: 0;
+        transform: translateY(20px) translateX(0px);
+    }
+
+    .mobile-masonry .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .mobile-masonry .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .mobile-masonry .service-card:nth-child(3) { animation-delay: 0.3s; }
+    .mobile-masonry .service-card:nth-child(4) { animation-delay: 0.4s; }
+    .mobile-masonry .service-card:nth-child(5) { animation-delay: 0.5s; }
+    .mobile-masonry .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+    /* Touch interaction improvements */
+    .mobile-masonry .service-card:active {
+        transform: scale(0.95) translateX(0) !important; /* Center on touch */
+        transition: transform 0.1s ease;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(var(--stagger-x, 0));
+    }
+}
+
+/* Set CSS custom properties for stagger positions */
+@media (max-width: 768px) {
+    .mobile-masonry .service-card:nth-child(odd) {
+        --stagger-x: -25px;
+        animation: fadeInUpLeft 0.5s ease forwards;
+    }
+
+    .mobile-masonry .service-card:nth-child(even) {
+        --stagger-x: 25px;
+        animation: fadeInUpRight 0.5s ease forwards;
+    }
+}
+
+@keyframes fadeInUpLeft {
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(-25px);
+    }
+}
+
+@keyframes fadeInUpRight {
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(25px);
+    }
+}
+
+/* Service Details Sections */
 .service-details {
     max-width: 1100px;
     margin: 0 auto;
@@ -167,53 +419,82 @@
 }
 
 @media (max-width: 768px) {
+    .service-details {
+        padding: 40px 20px;
+    }
+
     .service-section {
-        padding: 20px;
+        padding: 24px;
+        margin-bottom: 32px;
+        border-radius: 12px;
     }
 
     .service-section h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+    }
+
+    .service-section h2::after {
+        width: 40px;
+        height: 2px;
+        margin-top: 6px;
     }
 
     .service-section p {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Remove hover effects on mobile */
+    .service-section:hover {
+        transform: none;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        background: linear-gradient(135deg, #ffffff, #f9f9f9);
     }
 }
 
 .long-title {
-    font-size: 12px; /* smaller */
+    font-size: 12px;
     line-height: 1.2;
 }
 
 @media (max-width: 768px) {
-    .scroll-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255,255,255,0.9);
-        border: none;
-        border-radius: 50%;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        padding: 8px;
-        cursor: pointer;
-        z-index: 10;
-    }
-
-    .scroll-arrow.left {
-        left: 10px;
-    }
-
-    .scroll-arrow.right {
-        right: 10px;
-    }
-
-    .scroll-arrow svg {
-        font-size: 18px;
-        color: #7c1524;
-    }
-
-    .services-cards.mobile-only {
-        position: relative;
+    .long-title {
+        font-size: 11px;
+        line-height: 1.1;
+        padding: 0 4px;
     }
 }
 
+/* Touch feedback for all mobile layouts */
+@media (max-width: 768px) and (hover: none) {
+    .service-card:hover {
+        transform: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .service-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* Additional spacing improvements */
+@media (max-width: 768px) {
+    .services-hero {
+        margin-bottom: 20px; /* Add space between hero and details */
+    }
+}
+
+/* For very small screens (under 360px) */
+@media (max-width: 360px) {
+    .mobile-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        max-width: 250px;
+    }
+
+    .mobile-grid .service-card:last-child:nth-child(odd) {
+        grid-column: 1;
+        max-width: none;
+    }
+}
