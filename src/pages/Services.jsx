@@ -64,7 +64,7 @@ export const Services = () => {
                         </Row>
                     </div>
 
-                    {/* Mobile 2-column grid - OPTION 1: Clean Grid Layout */}
+
                     <div className="services-cards mobile-only">
                         <div className="mobile-grid">
                             {services.map((service, index) => (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Carousel, Row, Col, Spin } from "antd";
+import { Row, Col, Spin } from "antd";
 import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config.js";
 import { PostCard } from "../components/PostCard.jsx";
@@ -17,17 +17,16 @@ const imgStyle = {
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    transform: "scale(1.05)",
-    filter: "blur(6px)",
+
 };
 
 const textBoxStyle = {
     position: "absolute",
     top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    left: "8%",
+    transform: "translateY(-50%)",
     color: "#fff",
-    textAlign: "center",
+    textAlign: "left",
     zIndex: 2,
     background: "none",
     boxShadow: "none",
@@ -40,14 +39,9 @@ const textShadowStyle = {
 
 const images = [
     {
-        url: "https://images.unsplash.com/photo-1586782002395-4b748cf6e71d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+        url: "homepage.jpg",
     },
-    {
-        url: "https://images.unsplash.com/photo-1601711635481-b2c394118b53?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0",
-    },
-    {
-        url: "https://images7.alphacoders.com/724/724579.jpg",
-    },
+
 ];
 
 export const Home = () => {
@@ -77,38 +71,35 @@ export const Home = () => {
 
     return (
         <>
-            {/* Carousel */}
-            <Carousel>
-                {images.map(({ url }, i) => (
-                    <div key={i}>
-                        <div style={slideStyle}>
-                            <img src={url} alt="" style={imgStyle} />
-                            <div style={textBoxStyle}>
-                                <div style={{ fontSize: "4rem", fontWeight: 900, ...textShadowStyle }}>
-                                    TABIA
-                                </div>
-                                <div style={{ fontSize: "4rem", fontWeight: 900, ...textShadowStyle }}>
-                                    LEGAL & ADVISORY
-                                </div>
-                                <div
-                                    style={{
-                                        fontSize: "2rem",
-                                        fontWeight: 500,
-                                        marginTop: "20px",
-                                        ...textShadowStyle,
-                                    }}
-                                >
-                                    TAKING YOU TO THE TOP OF YOUR GAME
-                                </div>
-                            </div>
-                        </div>
+            {/* Single Hero Image */}
+            <div style={slideStyle}>
+                <img src={images[0].url} alt="" style={imgStyle} />
+                <div style={{ ...textBoxStyle }}>
+                    <div style={{ fontSize: "4rem", fontWeight: 900, ...textShadowStyle }}>
+                        TABIA
                     </div>
-                ))}
-            </Carousel>
+                    <div style={{ fontSize: "4rem", fontWeight: 900, ...textShadowStyle }}>
+                        LEGAL & ADVISORY
+                    </div>
+                    <div
+                        style={{
+                            fontSize: "2rem",
+                            fontWeight: 500,
+                            marginTop: "20px",
+                            ...textShadowStyle,
+                        }}
+                    >
+                        TAKING YOU TO THE TOP OF YOUR GAME
+                    </div>
+                </div>
+            </div>
+
+
+
 
             {/* Latest Posts Section */}
             <div style={{ margin: "0 auto" }}>
-                <div style={{ backgroundColor: '#7c1524', padding: "30px 20px", marginBottom: "20px" }}>
+                <div style={{ backgroundColor: 'rgb(51,4,4)', padding: "30px 20px", marginBottom: "20px" }}>
                     <h2
                         style={{
                             fontSize: "2rem",

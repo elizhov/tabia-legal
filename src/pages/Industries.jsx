@@ -5,33 +5,33 @@ import "../styles/Industries.css";
 
 const industries = [
     {
-        title: "Banking & Finance",
+        title: "Banking, Finance and Capital Markets",
         image: "finance.jpg",
         description: "We provide expert legal advice in banking, investments, and financial regulations."
     },
     {
-        title: "Mining & Metals",
+        title: "Natural Resources and Infrastructure",
         image: "mining.jpg",
         description: "Guiding startups and tech giants through compliance, data, and IP laws."
     },
     {
-        title: "Energy Infrastructure and Resources",
-        image: "energy.jpg",
+        title: "Tax and Digital Strategy Advisory",
+        image: "energy.jpg", // change
         description: "Advising on property transactions, development, and real estate disputes."
     },
     {
-        title: "Mergers and Acquisitions (M&A)",
+        title: "Corporate Advisory",
         image: "mergers.jpg",
         description: "Supporting clients with healthcare regulations, compliance, and disputes."
     },
     {
-        title: "Investment and Commercial Arbitration",
-        image: "investment.jpg",
+        title: "Environmental Law, Sustainability and ESG",
+        image: "investment.jpg", // change
         description: "Counseling energy companies on renewable, oil, gas, and sustainability matters."
     },
     {
-        title: "Residence and Citizenship",
-        image: "residence.jpg",
+        title: "Strategic Criminal Advisory and White-Collar Practice",
+        image: "residence.jpg", // change
         description: "Expert representation in commercial, civil, and international disputes."
     },
     {
@@ -40,15 +40,16 @@ const industries = [
         description: "Expert representation in commercial, civil, and international disputes."
     },
     {
-        title: "AML, CFT & Regulatory Compliance Advisory",
+        title: "AML, CFT and Regulatory Compliance Advisory",
         image: "aml.jpg",
         description: "Expert representation in commercial, civil, and international disputes."
     },
     {
-        title: "Disputes (Litigation before Armenian Courts)",
+        title: "Dispute Resolution",
         image: "disputes.jpg",
         description: "Expert representation in commercial, civil, and international disputes."
     },
+
 ];
 
 export const Industries = () => {
